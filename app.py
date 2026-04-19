@@ -1,12 +1,12 @@
-from flask import Flask, request, jsonify# flask is used to create restsful apis, request is used to receive data from frontend
-from flask_cors import CORS # it is used to communate between frontend and backend, to understand more clearly: "https://chatgpt.com/s/t_69e3c18a7b848191b9db22ff9d0c0434"
-from langchain.agents import create_agent # used to create agent
-from langchain.chat_models import init_chat_model # used to create chat model
-from langgraph.checkpoint.memory import InMemorySaver # used to create memeory
+from flask import Flask, request, jsonify
+from flask_cors import CORS 
+from langchain.agents import create_agent 
+from langchain.chat_models import init_chat_model 
+from langgraph.checkpoint.memory import InMemorySaver 
 import os
 from dotenv import load_dotenv
-import requests # use to send data to another api
-import json # to understand about json and base64: "https://chatgpt.com/s/t_69e3c36dff6c81918a19998434a852b6"
+import requests 
+import json 
 import base64
 import tempfile
 import assemblyai as aai
@@ -65,7 +65,6 @@ Be specific - reference ACTUAL things they said during the interview."""
 app = Flask(__name__)
 CORS(app, expose_headers=['X-Question-Number'])
 
-# to understand clearly about why we again created agent and memory inside function use this: "https://chatgpt.com/s/t_69e3cd0522108191a1bcf30b2e2cbcd8"
 
 def stream_audio(text):
   url = "https://global.api.murf.ai/v1/speech/stream"
@@ -75,7 +74,7 @@ def stream_audio(text):
   }
   data = {
     "voice_id": "Matthew",
-    "text": text, # you will give here which text you want to change to audio
+    "text": text,
     "locale": "en-US",
     "model": "FALCON",
     "format": "MP3",
@@ -85,11 +84,10 @@ def stream_audio(text):
 
   response = requests.post(url, headers=headers, data=json.dumps(data), stream=True)
 
-  # to understand clearly about the for loop: "https://chatgpt.com/s/t_69e3c865540c81918007e829e33f41de"
+ 
   for chunk in response.iter_content(chunk_size=4096):
     if chunk:
-        yield base64.b64encode(chunk).decode("utf-8") + "\n" # because of using yield it will not return until all the chunks are received.
-
+        yield base64.b64encode(chunk).decode("utf-8") + "\n" 
 
 
 @app.route("/start-interview", methods=["POST"])
@@ -115,7 +113,7 @@ def start_interview():
     }, config=config)
   question = response["messages"][-1].content
   print(f"\n[Question {question_count}] {question}")
-  return stream_audio(question), {"Content-Type": "text/plain"} # HTTP responses must tell the browser what type of data is coming.
+  return stream_audio(question), {"Content-Type": "text/plain"} 
 
 def speech_to_text(audio_path):
    transcriber = aai.Transcriber()
@@ -187,6 +185,5 @@ def get_feedback():
 
    return jsonify({"success": True, "feedback": feedback})
 
-   
-
 app.run(debug=True, port=5000)
+
