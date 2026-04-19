@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"> <!--“ lang="en" refers to the primary language of this page is English. ”
-                        for better understanding: "https://chatgpt.com/s/t_69e311eaea148191b1cce746e066516c"-->
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- to understand about meta: "https://chatgpt.com/s/t_69e313e0137c819190461c73b03a282f" -->
     <title>AI Interview Assistant</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -67,7 +65,6 @@
         }
         .gradient-heading {
             background: linear-gradient(135deg, #190c35, #92292c,#2a292a);
-            /* to understand below css properties: "https://chatgpt.com/s/t_69e31dac18648191b4b447cc8e0a5b7f" */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -83,17 +80,9 @@
     </style>
 </head>
 
-<body class="bg-black min-h-screen text-white font-inter"> <!-- min-h-screen refers to : "min-height: 100vh;"" -->
+<body class="bg-black min-h-screen text-white font-inter"> 
 
     <div class="min-h-screen flex flex-col lg:flex-row">
-
-        <!-- Sidebar - 1/5 width on large screens -->
-        <!-- "lg:w-[25vh]" we can use this also -->
-        <!--
-            border-b refers to "border-bottom-width: 1px;",
-            lg:border-b-0 refers to "border-bottom: 0;" in large devices,
-            border-zinc-800/50 refers to "border with color zinc"
-        -->
         <aside class="w-full lg:w-1/5 sidebar-gradient border-b lg:border-b-0 lg:border-r border-zinc-800/50 p-4 lg:p-6 flex flex-col">
             
             <!-- Logo -->
@@ -102,7 +91,7 @@
                     <i class="fas fa-robot text-white text-xl"></i> <!-- here we used fontawesome logo -->
                 </div>
                 <p class="font-space font-bold text-2xl tracking-tight gradient-heading">AI Interview</p>
-                <!-- tracking-tight refers to: "letter-spacing: -0.025em;" here em is css units multiplied to the parent units -->
+                
             </div>
 
             <!-- Topic Label -->
@@ -110,12 +99,7 @@
 
             <!-- Subject Buttons -->
             <div class="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0">
-                <!-- 
-                    overflow-x-auto : If content becomes wider than the container → 👉 show horizontal scroll.
-                    lg:overflow-x-visible : This removes the scroll behavior and lets content be fully visible.
-                 -->
                 <button class="subject-btn flex items-center gap-3 bg-zinc-900/30 hover:bg-zinc-800/50 border border-zinc-700/50 hover:border-zinc-500 rounded-xl p-3 transition-all duration-300 text-left whitespace-nowrap flex-shrink-0" data-subject="Self Introduction">
-                    <!-- to understand clearly about whitespace-nowrap and flex-shrink-0: "https://chatgpt.com/s/t_69e33be541c48191862b0e906584bba0" -->
                     <div class="w-9 h-9 bg-blue-500/20 rounded-lg flex items-center justify-center">
                         <i class="fas fa-user text-blue-400"></i>
                     </div>
@@ -166,7 +150,7 @@
 
         <!-- Main Content - 4/5 width on large screens -->
         <main class="flex-1 lg:w-4/5 flex flex-col bg-black">
-            <!-- flex-1 means: “Take all available leftover space.” -->
+            
             <!-- Header - Centered -->
             <header class="px-4 lg:px-8 py-6 lg:py-8 border-b border-zinc-800/50">
                 <div class="text-center max-w-3xl mx-auto">
